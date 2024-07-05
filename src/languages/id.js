@@ -15,4 +15,5 @@ export default {
   app_project_link: 'Tautan',
   app_project_type: 'Tipe',
   app_table_row_per_page: 'Baris per halaman',
+  app_fullstack: 'Halo Fullstack WEB DEVELOPER!',
 };

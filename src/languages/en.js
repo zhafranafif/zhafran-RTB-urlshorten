@@ -15,4 +15,5 @@ export default {
   app_project_link: 'Link',
   app_project_type: 'Type',
   app_table_row_per_page: 'Rows per page',
+  app_fullstack: 'Hello Fullstack WEB DEVELOPER!',
 };

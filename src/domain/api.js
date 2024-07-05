@@ -1,10 +1,10 @@
-import config from '@config/index';
 import { merge } from 'lodash';
 
 import request from '@utils/request';
 
 const urls = {
-  json: 'data.json',
+  json: 'http://localhost:3000/api/data.json',
+  countryGetAllKist: 'https://restcountries.com/v3.1/all',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -14,7 +14,7 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 
   const headers = merge(defaultHeader, header);
   const options = {
-    baseURL: config.api.host,
+    baseURL: endpoint,
     url: endpoint,
     method,
     headers,
@@ -29,3 +29,5 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 };
 
 export const getData = () => callAPI(urls.json, 'get');
+
+export const getCountryList = () => callAPI(urls.countryGetAllKist, 'get', {}, {});

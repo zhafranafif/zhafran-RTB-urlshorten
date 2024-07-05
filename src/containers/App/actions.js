@@ -1,4 +1,13 @@
-import { SET_LOCAL, SET_THEME, SET_POPUP, SET_LOADING, SET_DATA, GET_DATA } from '@containers/App/constants';
+import {
+  SET_LOCAL,
+  SET_THEME,
+  SET_POPUP,
+  SET_LOADING,
+  SET_DATA,
+  GET_DATA,
+  GET_COUNTRY_LIST,
+  SET_COUNTRY_LIST,
+} from '@containers/App/constants';
 
 export const setLocale = (locale) => ({
   type: SET_LOCAL,
@@ -39,4 +48,13 @@ export const setData = (data) => ({
 
 export const getData = () => ({
   type: GET_DATA,
+});
+
+export const getCountryList = () => ({
+  type: GET_COUNTRY_LIST,
+});
+
+export const setCountryList = (countryList) => ({
+  type: SET_COUNTRY_LIST,
+  countryList,
 });

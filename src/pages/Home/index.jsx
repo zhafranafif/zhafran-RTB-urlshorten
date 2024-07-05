@@ -4,37 +4,37 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 
-import { getData } from '@containers/App/actions';
-import { selectData } from '@containers/App/selectors';
+import { getCountryList } from '@containers/App/actions';
+import { selectCountryList } from '@containers/App/selectors';
 
 import classes from './style.module.scss';
 
-const Home = ({ data }) => {
+const Home = ({ countryList }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getData());
-  }, [dispatch]);
+    console.log(countryList, 'country list redux');
+  }, [countryList]);
 
   useEffect(() => {
-    console.log(data);
-  }, [data]);
+    dispatch(getCountryList());
+  }, [dispatch]);
 
   return (
     <div className={classes.wrapper}>
       <h3>
-        <FormattedMessage id="app_greeting" />
+        <FormattedMessage id="app_fullstack" />
       </h3>
     </div>
   );
 };
 
 Home.propTypes = {
-  data: PropTypes.array,
+  countryList: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
-  data: selectData,
+  countryList: selectCountryList,
 });
 
 export default connect(mapStateToProps)(Home);
