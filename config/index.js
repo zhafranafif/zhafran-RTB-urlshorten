@@ -9,6 +9,9 @@ const config = {
   api: {
     host: env.API_HOST,
   },
+  key: {
+    host: env.API_KEY,
+  },
 };
 
 export default config;

@@ -1,0 +1,2 @@
+export const SET_SHORTENURL = 'Home/SET_SHORTENURL';
+export const GET_SHORTENURL = 'Home/GET_SHORTENURL';

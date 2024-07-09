@@ -25,6 +25,16 @@ $screen-1024-limit: 1024px;
     @content;
   }
 }
+@mixin apply-at-max-sm-size{
+  @media (max-width: $screen-sm-limit){
+    @content;
+  } 
+} 
+@mixin apply-at-smTolg-size{
+  @media (min-width: $screen-sm-limit) and (max-width: $screen-lg-limit){
+    @content;
+  }
+}
 
 @mixin apply-at-md-size {
   @media (min-width: $screen-md-limit) {
