@@ -51,4 +51,7 @@ export default {
   app_footer_company3: 'Karier',
   app_footer_company4: 'Kontak',
   app_input_error: 'Harap tambahkan tautan!',
+  app_button_copy: 'Salin',
+  app_button_copied: 'Disalin!',
+  app_button_shorten: 'Perpendek!',
 };

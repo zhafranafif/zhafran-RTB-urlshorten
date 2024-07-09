@@ -73,7 +73,10 @@ const Home = ({ data }) => {
                 </span>
               )}
             </div>
-            <button type="submit">Shorten It!</button>
+            <button type="submit">
+              {' '}
+              <FormattedMessage id="app_button_shorten" />
+            </button>
           </form>
         </div>
         <section className={classes.linkList}>
@@ -87,7 +90,11 @@ const Home = ({ data }) => {
                     type="button"
                     style={copyStatus ? { backgroundColor: '#3A3053' } : { backgroundColor: 'hsl(180, 66%, 49%)' }}
                   >
-                    {copyStatus ? 'Copied!' : 'Copy'}
+                    {copyStatus ? (
+                      <FormattedMessage id="app_button_copied"> : </FormattedMessage>
+                    ) : (
+                      <FormattedMessage id="app_button_copy" />
+                    )}
                   </button>
                 </CopyToClipboard>
               </div>
@@ -118,7 +125,7 @@ const Home = ({ data }) => {
             </p>
           </div>
           <div className={classes.line} />
-          <div className={classes.statisticItemHeader}>
+          <div className={`${classes.statisticItemHeader} header1`}>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40">
               <path
                 fill="#2BD0D0"

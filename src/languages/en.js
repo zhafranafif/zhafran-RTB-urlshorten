@@ -51,4 +51,7 @@ export default {
   app_footer_company3: 'Careers',
   app_footer_company4: 'Contact',
   app_input_error: 'Please add a link!',
+  app_button_copy: 'Copy',
+  app_button_copied: 'Copied!',
+  app_button_shorten: 'Shorten it!',
 };
