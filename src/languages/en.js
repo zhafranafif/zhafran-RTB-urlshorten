@@ -50,4 +50,5 @@ export default {
   app_footer_company2: 'Our Team',
   app_footer_company3: 'Careers',
   app_footer_company4: 'Contact',
+  app_input_error: 'Please add a link!',
 };

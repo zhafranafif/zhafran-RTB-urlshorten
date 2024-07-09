@@ -50,4 +50,5 @@ export default {
   app_footer_company2: 'Tim Kami',
   app_footer_company3: 'Karier',
   app_footer_company4: 'Kontak',
+  app_input_error: 'Harap tambahkan tautan!',
 };

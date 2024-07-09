@@ -5,6 +5,7 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { useForm } from 'react-hook-form';
 
 import FBLogo from '@static/images/images/icon-facebook.svg';
 import TwitterLogo from '@static/images/images/icon-twitter.svg';
@@ -20,6 +21,12 @@ const Home = ({ data }) => {
   const dispatch = useDispatch();
   const [inputURL, setInputURL] = useState();
   const [copyStatus, setCopyStatus] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const handleSubmitShortenLink = (e) => {
     e.preventDefault();
@@ -51,8 +58,21 @@ const Home = ({ data }) => {
       </section>
       <section className={classes.mainFeatures}>
         <div className={classes.shortenInput}>
-          <form action="" className={classes.input} onSubmit={handleSubmitShortenLink}>
-            <input type="text" onChange={handleChange} />
+          <form action="" className={classes.input} onSubmit={handleSubmit(handleSubmitShortenLink)}>
+            <div className={classes.inputWrapper}>
+              <input
+                type="text"
+                placeholder="Shorten a link here..."
+                onChange={handleChange}
+                {...register('url', { required: true })}
+                style={errors.url && { outline: '1px solid red' }}
+              />
+              {errors.url && (
+                <span className={classes.error}>
+                  <FormattedMessage id="app_input_error" />
+                </span>
+              )}
+            </div>
             <button type="submit">Shorten It!</button>
           </form>
         </div>
