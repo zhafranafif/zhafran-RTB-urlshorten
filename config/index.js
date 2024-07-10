@@ -10,7 +10,7 @@ const config = {
     host: env.API_HOST,
   },
   key: {
-    host: process.env.API_KEY,
+    host: env.VITE_API_KEY,
   },
 };
 

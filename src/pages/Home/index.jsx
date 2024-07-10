@@ -22,6 +22,9 @@ const Home = ({ data, errorURL }) => {
     dispatch(setShortURL(inputURL));
   };
   const handleChange = (e) => {
+    if (e.target.value === '') {
+      return;
+    }
     setInputURL(e.target.value);
   };
   const handleCopy = () => {
@@ -52,7 +55,6 @@ const Home = ({ data, errorURL }) => {
             <div className={classes.inputWrapper}>
               <input type="text" placeholder="Shorten a link here..." onChange={handleChange} />
               {errorURL.status && <span className={classes.error}>{errorURL.message}</span>}
-              {!inputURL && <span className={classes.error}>Invalid URL!</span>}
             </div>
             <button type="submit">
               {' '}
