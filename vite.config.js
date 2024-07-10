@@ -44,7 +44,7 @@ export default ({ mode }) =>
     define: {
       'process.env': {
         NODE_ENV: mode,
-        API_KEY: process.env.VITE_API_KEY,
+        VITE_API_KEY: process.env.VITE_API_KEY,
       },
     },
   });
