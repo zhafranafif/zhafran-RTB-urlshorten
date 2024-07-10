@@ -5,7 +5,6 @@ import { connect, useDispatch } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { FormattedMessage } from 'react-intl';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import { useForm } from 'react-hook-form';
 
 import Hero from '@static/images/images/illustration-working.svg';
 
@@ -18,13 +17,8 @@ const Home = ({ data, errorURL }) => {
   const [inputURL, setInputURL] = useState();
   const [copyStatus, setCopyStatus] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const handleSubmitShortenLink = () => {
+  const handleSubmitShortenLink = (e) => {
+    e.preventDefault();
     dispatch(setShortURL(inputURL));
   };
   const handleChange = (e) => {
@@ -34,7 +28,7 @@ const Home = ({ data, errorURL }) => {
     setCopyStatus(true);
     setTimeout(() => setCopyStatus(false), 3000);
   };
-  console.log(errorURL);
+  console.log(data);
   return (
     <div className={classes.wrapper}>
       <section className={classes.hero}>
@@ -54,15 +48,11 @@ const Home = ({ data, errorURL }) => {
       </section>
       <section className={classes.mainFeatures}>
         <div className={classes.shortenInput}>
-          <form action="" className={classes.input} onSubmit={handleSubmit(handleSubmitShortenLink)}>
+          <form action="" className={classes.input} onSubmit={handleSubmitShortenLink}>
             <div className={classes.inputWrapper}>
-              <input
-                type="text"
-                placeholder="Shorten a link here..."
-                {...register('url', { required: true, onChange: handleChange })}
-                style={errors.url && { outline: '1px solid red' }}
-              />
-              {errors.url || (errorURL.status && <span className={classes.error}>{errorURL.message}</span>)}
+              <input type="text" placeholder="Shorten a link here..." onChange={handleChange} />
+              {errorURL.status && <span className={classes.error}>{errorURL.message}</span>}
+              {!inputURL && <span className={classes.error}>Invalid URL!</span>}
             </div>
             <button type="submit">
               {' '}
