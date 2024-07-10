@@ -372,8 +372,9 @@
       margin-top: 30px;
       gap: 16px;
     }
-    .socmed img:hover{
+    .socmed svg:hover path{
       cursor: pointer;
+      fill: hsl(180, 66%, 49%);
     }
   }
   @include apply-at-smTolg-size{

@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack';
 import Avatar from '@mui/material/Avatar';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import { setLocale } from '@containers/App/actions';
 
@@ -18,6 +19,15 @@ const Navbar = ({ locale }) => {
 
   const [menuPosition, setMenuPosition] = useState(null);
   const open = Boolean(menuPosition);
+  const [mobileMenuPosition, setMobileMenuPosition] = useState(null);
+  const mobileMenuOpen = Boolean(mobileMenuPosition);
+
+  const handleClickMobileMenu = (event) => {
+    setMobileMenuPosition(event.currentTarget);
+  };
+  const handleCloseMobileMenu = () => {
+    setMobileMenuPosition(null);
+  };
 
   const handleClick = (event) => {
     setMenuPosition(event.currentTarget);
@@ -80,7 +90,7 @@ const Navbar = ({ locale }) => {
           {' '}
           <FormattedMessage id="app_navigation5" />
         </button>
-        <Stack direction="row">
+        <Stack direction="row" className={classes.menuLanguage}>
           <IconButton onClick={handleClick}>
             <Avatar src={locale === 'id' ? '/id.png' : '/en.png'} sx={iconStyle} />
           </IconButton>
@@ -104,6 +114,72 @@ const Navbar = ({ locale }) => {
           </MenuItem>
         </Menu>
       </div>
+      <Stack direction="row" className={classes.mobileMenu}>
+        <MenuIcon onClick={handleClickMobileMenu} />
+      </Stack>
+      <Menu
+        open={mobileMenuOpen}
+        anchorEl={mobileMenuPosition}
+        onClose={handleCloseMobileMenu}
+        sx={{
+          '& .MuiMenu-paper': { backgroundColor: '#3A3053', width: '100%' },
+          '& .MuiPaper-root': { display: 'flex', justifyContent: 'center', alignItems: 'center' },
+        }}
+        className={classes.menuMobile}
+      >
+        <nav>
+          <ul
+            style={{
+              listStyleType: 'none',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '20px',
+              paddingLeft: '0',
+              justifyContent: 'center',
+              alignItems: 'center',
+              fontWeight: '700',
+            }}
+          >
+            <li>
+              <a href="/" style={{ color: 'white', textDecoration: 'none' }}>
+                {' '}
+                <FormattedMessage id="app_navigation1" />
+              </a>
+            </li>
+            <li>
+              <a href="/" style={{ color: 'white', textDecoration: 'none' }}>
+                {' '}
+                <FormattedMessage id="app_navigation2" />
+              </a>
+            </li>
+            <li>
+              <a href="/" style={{ color: 'white', textDecoration: 'none' }}>
+                {' '}
+                <FormattedMessage id="app_navigation3" />
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <hr style={{ width: '100%', textAlign: 'center' }} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <button
+            type="button"
+            className={classes.loginMobile}
+            style={{ color: 'white', background: 'none', border: 'none', fontSize: '18px' }}
+          >
+            {' '}
+            <FormattedMessage id="app_navigation4" />
+          </button>
+          <button
+            type="button"
+            className={classes.signupMobile}
+            style={{ color: 'white', background: 'none', border: 'none', fontSize: '18px' }}
+          >
+            {' '}
+            <FormattedMessage id="app_navigation5" />
+          </button>
+        </div>
+      </Menu>
     </div>
   );
 };
