@@ -35,7 +35,7 @@ export const getData = () => callAPI(urls.json, 'get');
 export const getCountryList = () => callAPI(urls.countryGetAllKist, 'get', {}, {});
 
 export const shortenLink = (url) => {
-  console.log(process.env.VITE_API_KEY);
+  console.log(process.env);
   const header = {
     'api-key': config.key.host,
   };
